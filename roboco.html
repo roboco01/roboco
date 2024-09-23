@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>robo.co - Empowering Robotics Education</title>
+    <script src="https://kit.fontawesome.com/b338e32605.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #223344;
+            color: #40e0d0;
+            font-family: 'Ubuntu Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        h5,h4 {
+            font-family: 'Press Start 2P', cursive
+        }
+
+        .navbar {
+            background-color: #192841;
+            padding: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navbar:hover {
+            background-color: #203354;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            color: #40e0d0;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #00ffff;
+        }
+
+        .nav-item button {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item button:hover {
+            transform: translateY(-3px);
+        }
+
+        .jumbotron {
+            background-color: #FF5757;
+            color: #223344;
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 20px;
+        }
+
+        .card {
+            background-color: #222;
+            border: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .card h5 {
+            color: #40e0d0;
+        }
+
+        .footer {
+            background-color: #272523;
+            color: white;
+            padding: 10px;
+            height: 37px;
+            position: relative;
+        }
+
+        .btn-custom {
+            background-color: #40e0d0;
+            border: none;
+            color: #223344;
+            font-family: "Ubuntu Mono", monospace;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.4);
+        }
+
+        .btn-custom:hover {
+            background-color: #ff5757;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 65, 108, 0.6);
+        }
+
+        .section-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .section-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        a {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .cart-section {
+            display: none;
+        }
+
+        #cart-list img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">robo.co</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><button class='btn btn-custom'
+                                onclick='showSection("about")'>About Us</button></li>&nbsp;
+                        <li class="nav-item"><button class='btn btn-custom'
+                                onclick='showSection("kits")'>Robotics Kits</button></li>&nbsp;
+                        <li class="nav-item"><button class='btn btn-custom'
+                                onclick='showSection("contact")'>Contact Us</button></li>&nbsp;
+                        <li class="nav-item"><button class='btn btn-custom'
+                                onclick='showSection("donate")'>Donate Now</button></li>&nbsp;
+                        <li class="nav-item"><button class='btn btn-custom'
+                                onclick='showSection("cart")'><i style='font-size:20px' class='fas'>&#xf07a;</i></button></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="jumbotron">
+            <h1 class="jumbotron-heading">Welcome to robo.co</h1>
+            <p class="lead">Empowering the next generation of robotics enthusiasts.</p>
+        </section>
+
+        <div class="container">
+            <section id="about" class='section-content active'>
+                <h1>Our Vision</h1>
+                <p>Our vision for a PC building and robotics teaching company is to empower the next generation of innovators with hands-on, real-world skills that bridge the gap between technology and creativity. We aim to create an interactive learning environment where enthusiasts of all ages can dive into the intricacies of PC assembly and robotics engineering. Through comprehensive workshops and personalized mentorship, we strive to cultivate a community of problem solvers who are not only adept at building cutting-edge systems but are also inspired to push the boundaries of what's possible in tech. By fostering a culture of curiosity and collaboration, we envision a future where our students become the pioneers of tomorrow's technological advancements..<br>
+                    <h2>Unleash the creator in you.</h2>
+                </p>
+            </section>
+
+            <section id="kits" class='section-content'>
+                <h2>Robotics Kits</h2>
+                <div class='row'>
+                    <div class='col-md-4'>
+                        <div class='card mb-4 shadow-sm'>
+                            <img src='https://cdn.sparkfun.com/assets/9/1/e/4/8/515b4656ce395f8a38000000.png'
+                                alt='Arduino Kit' class='card-img-top'>
+                            <div class='card-body'>
+                                <h5>Arduino Kit (UNO R3)</h5>
+                                <p>A comprehensive kit for learning Arduino programming and building projects.<br><h4>₹3000</h4></p>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("Arduino Kit (R3)", "https://cdn.sparkfun.com/assets/9/1/e/4/8/515b4656ce395f8a38000000.png")'>Add R3</button>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("Arduino Kit (R4)", "https://cdn.sparkfun.com/assets/9/1/e/4/8/515b4656ce395f8a38000000.png")'>Add R4</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <div class='card mb-4 shadow-sm'>
+                            <img src='https://m.media-amazon.com/images/I/71u2Od-VqZL.jpg' alt='Raspberry Pi Kit'
+                                class='card-img-top'>
+                            <div class='card-body'>
+                                <h5>Raspberry Pi Advanced AI Kit</h5>
+                                <p>Explore computing with Raspberry Pi, perfect for beginners and experts alike.<br><h4>₹15000</h4></p>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("Raspberry Pi (4GB)", "https://m.media-amazon.com/images/I/71u2Od-VqZL.jpg")'>Add 4GB</button>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("Raspberry Pi (8GB)", "https://m.media-amazon.com/images/I/71u2Od-VqZL.jpg")'>Add 8GB</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='col-md-4'>
+                        <div class='card mb-4 shadow-sm'>
+                            <img src="esp32.png" alt="ESP KIT" class='card-img-top'>
+                            <div class='card-body'>
+                                <h5>ESP8266/ESP32 Development Kit</h5>
+                                <p>Start IoT projects with this versatile ESP kit.<br><h4>₹2000</h4></p>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("ESP8266 Kit", "https://m.media-amazon.com/images/I/51SXaGQkxqL._AC_.jpg")'>Add ESP8266</button>
+                                <button type='button' class='btn btn-primary'
+                                    onclick='addToCart("ESP32 Kit", "https://hackster.imgix.net/uploads/attachments/1443797/_AAHmRVX8DU.blob?auto=compress&w=1600&h=1200&fit=min&fm=jpg")'>Add ESP32</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class='section-content'>
+                <h2>Contact Us</h2>
+                <p>For inquiries, please email us at: <a href="mailto:support@robo.co">support@robo.co</a></p>
+            </section>
+
+            <section id="donate" class='section-content'>
+                <h2>Support Us</h2>
+                <p>Your contributions help us provide better resources and workshops. <a href="#">Donate Now</a></p>
+            </section>
+
+            <section id="cart" class='section-content'>
+                <h2>Your Cart</h2>
+                <ul id="cart-list"></ul>
+                <button type="button" class='btn btn-custom' onclick='checkout()'>Proceed to Checkout</button>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer text-center">
+        <p>&copy; 2024 robo.co. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(item, imageUrl) {
+            const cartItem = {
+                name: item,
+                image: imageUrl
+            };
+            cart.push(cartItem);
+            alert(`${item} added to cart!`);
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartButton = document.querySelector('.navbar .nav-item button[onclick="showSection(\'cart\')"]');
+            cartButton.textContent = `Cart (${cart.length})`;
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            if (sectionId === 'cart') {
+                showCart();
+            }
+        }
+
+        function showCart() {
+            const cartList = document.getElementById('cart-list');
+            cartList.innerHTML = '';
+            cart.forEach((item) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<img src="${item.image}" alt="${item.name}">
+                                ${item.name}`;
+                cartList.appendChild(li);
+            });
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty.');
+            } else {
+                alert(`You have ${cart.length} item(s) in your cart: ${cart.map(item => item.name).join(', ')}`);
+                // You can proceed to checkout here
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
